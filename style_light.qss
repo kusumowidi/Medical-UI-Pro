@@ -1,0 +1,76 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Medical UI Pro — Light Clinical Theme
+   Clean, bright design for well-lit clinical environments
+   ═══════════════════════════════════════════════════════════════════ */
+
+QMainWindow { background-color: #f0f2f5; }
+QWidget { color: #1a2332; font-family: 'Consolas', 'Courier New', monospace; }
+
+/* Group Boxes */
+QGroupBox {
+    border: 1px solid #b0c4d8; border-radius: 4px; margin-top: 15px;
+    background-color: rgba(255, 255, 255, 0.9); color: #0066aa; font-weight: bold;
+}
+QGroupBox::title {
+    subcontrol-origin: margin; subcontrol-position: top center; padding: 0 5px;
+    background-color: #f0f2f5; border: 1px solid #b0c4d8; border-radius: 3px;
+}
+
+/* Buttons */
+QPushButton {
+    background-color: #ffffff; border: 1px solid #0077cc; border-radius: 3px;
+    color: #0066aa; padding: 8px 16px; font-weight: bold;
+}
+QPushButton:hover { background-color: #0077cc; color: #ffffff; }
+QPushButton:pressed { background-color: #004488; border: 1px solid #004488; color: #ffffff; }
+QPushButton:disabled { background-color: #e8ecf0; border: 1px solid #c0c8d0; color: #90a0b0; }
+QPushButton:checked { background-color: #0077cc; border: 1px solid #004488; color: #ffffff; }
+
+QPushButton[class="preset"] { padding: 4px 6px; font-size: 10px; min-width: 35px; }
+
+/* Labels */
+QLabel { font-size: 13px; color: #1a2332; }
+
+/* Sliders */
+QSlider::groove:horizontal { border: 1px solid #b0c4d8; height: 4px; background: #e0e8f0; margin: 2px 0; }
+QSlider::handle:horizontal { background: #0077cc; border: 1px solid #0066aa; width: 6px; margin: -8px 0; }
+QSlider::handle:horizontal:hover { background: #ff6600; border: 1px solid #ff6600; }
+
+/* Combo Box */
+QComboBox {
+    background-color: #ffffff; border: 1px solid #0077cc; border-radius: 3px;
+    color: #0066aa; padding: 5px 10px; font-weight: bold;
+}
+QComboBox:hover { border: 1px solid #004488; }
+QComboBox::drop-down { border: none; width: 20px; }
+QComboBox QAbstractItemView {
+    background-color: #ffffff; border: 1px solid #b0c4d8;
+    color: #1a2332; selection-background-color: #cce4f7;
+}
+
+/* Progress Bar */
+QProgressBar {
+    border: 1px solid #b0c4d8; border-radius: 2px; background: #e0e8f0;
+    height: 8px; text-align: center; color: #0066aa; font-size: 9px;
+}
+QProgressBar::chunk {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #66aadd, stop:0.5 #0077cc, stop:1 #66aadd);
+}
+
+/* Status Bar */
+QStatusBar {
+    background: #e8ecf0; color: #0066aa; border-top: 1px solid #b0c4d8;
+    font-family: 'Consolas', 'Courier New', monospace; font-weight: bold;
+}
+
+/* Message Box */
+QMessageBox { background-color: #f0f2f5; }
+QMessageBox QLabel { color: #1a2332; font-size: 13px; }
+QMessageBox QPushButton { min-width: 80px; }
+
+/* Scroll Area */
+QScrollArea { border: none; background: transparent; }
+QScrollBar:vertical { background: #e0e8f0; width: 8px; border: none; }
+QScrollBar::handle:vertical { background: #b0c4d8; min-height: 20px; border-radius: 4px; }
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical { height: 0; }

@@ -1,0 +1,62 @@
+name: Lint & Type Check
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  lint:
+    name: Ruff Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Run ruff
+        run: ruff check . --output-format=github
+
+  typecheck:
+    name: MyPy Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies (no-binary for headless)
+        run: |
+          pip install numpy trimesh mypy
+          pip install PyQt6-stubsonly --quiet || true
+
+      - name: Run mypy on core modules
+        run: mypy models.py renderer.py --ignore-missing-imports --no-strict-optional
+
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test dependencies
+        run: |
+          pip install numpy trimesh pytest pytest-cov
+
+      - name: Run tests (headless — no GUI/GL required)
+        run: python -m pytest tests/ -v --cov=models --cov=renderer --cov-report=term-missing

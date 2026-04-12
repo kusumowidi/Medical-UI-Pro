@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp files
+tempCodeRunnerFile.py
+*.tmp
+*.bak
+
+# Large binary 3D assets
+# These are tracked via Git LFS. Run: git lfs track "*.stl"
+# See: https://git-lfs.github.com/
+*.stl
+
+# Pinned lockfile (do not ignore — commit this)
+# requirements-lock.txt
+
+# Logs
+*.log
+
+# Test artifacts
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml

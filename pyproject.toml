@@ -1,0 +1,79 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medical-ui-pro"
+version = "2.0.0"
+description = "Gesture-controlled 3D medical STL viewer with OpenGL rendering"
+license = {text = "MIT"}
+requires-python = ">=3.9,<3.13"
+readme = "README.md"
+authors = [
+    {name = "Biomedical Engineering — Universitas Indonesia", email = "biomedtek@ui.ac.id"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Healthcare Industry",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Operating System :: OS Independent",
+]
+
+dependencies = [
+    "opencv-python>=4.8.0,<5.0",
+    "mediapipe>=0.10.0,<0.12",
+    "numpy>=1.24.0,<2.0",
+    "PyQt6>=6.5.0,<7.0",
+    "trimesh>=3.20.0,<5.0",
+    "PyOpenGL>=3.1.7,<4.0",
+]
+
+[project.optional-dependencies]
+dev = ["ruff>=0.4.0", "mypy>=1.9.0", "pytest>=8.0", "pytest-cov>=5.0"]
+
+[project.urls]
+"Source Code" = "https://github.com/your-org/3d-control"
+"Issue Tracker" = "https://github.com/your-org/3d-control/issues"
+"Changelog"    = "https://github.com/your-org/3d-control/blob/main/CHANGELOG.md"
+
+[project.scripts]
+# NOTE: This entry point requires the package to be installed from a proper
+# package directory (e.g., medical_viewer/). Currently main.py lives at
+# the project root. Refactor to package structure before distributing via PyPI.
+medical-viewer = "main:main"
+
+# ─── Ruff (linter) ───────────────────────────────────────────────────────────
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B"]
+ignore = [
+    "E501",   # line too long — handled by formatter
+    "B008",   # do not perform function calls in default arguments
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]  # allow assert in tests
+
+# ─── MyPy (type checker) ─────────────────────────────────────────────────────
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+no_strict_optional = true
+warn_unused_ignores = true
+
+# ─── Pytest ──────────────────────────────────────────────────────────────────
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"

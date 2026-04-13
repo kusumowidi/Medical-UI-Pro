@@ -32,7 +32,7 @@ tempCodeRunnerFile.py
 # Large binary 3D assets
 # These are tracked via Git LFS. Run: git lfs track "*.stl"
 # See: https://git-lfs.github.com/
-*.stl
+# *.stl
 
 # Pinned lockfile (do not ignore — commit this)
 # requirements-lock.txt

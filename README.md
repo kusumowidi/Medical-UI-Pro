@@ -1,10 +1,12 @@
-# 🏥 Medical UI Pro — Holographic Edition v2.0
+# 🏥 Medical UI Pro 
 
 ![Python](https://img.shields.io/badge/python-3.9%20–%203.12-blue?logo=python)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey)
 ![Status](https://img.shields.io/badge/status-Beta-orange)
 ![OpenGL](https://img.shields.io/badge/OpenGL-3.3%2B-red)
+
+![UI Preview](example.png)
 
 > ⚠️ **Medical Disclaimer:** This software is intended for **educational and research purposes only**.  
 > It is **NOT** a certified medical device and must **NOT** be used for clinical diagnosis, treatment
@@ -41,6 +43,8 @@ control or conventional mouse/keyboard input.
 - **Dark/Light Theme Toggle** — Dark radiology mode and bright OR room mode
 - **Auto Mesh Decimation** — Large meshes (> 50,000 faces) automatically simplified via quadric decimation
 - **FPS Counter** — Persistent real-time frame counter in the 3D viewport
+- **Two-Way Binding Sliders** — State-synchronized UI sliders (rotation/zoom/pan)
+- **Interactive Status Bar** — Real-time telemetry, mode indicators, and engine status
 
 ---
 
@@ -53,7 +57,7 @@ control or conventional mouse/keyboard input.
 | **GPU** | OpenGL 3.3+ recommended — software renderer fallback is available |
 | **Webcam** | Optional — mouse/keyboard fallback activates automatically |
 | **RAM** | ≥ 4 GB recommended; ≥ 8 GB for files > 100 MB |
-| **Disk** | ~250 MB for dependencies; sample STL files are tracked via Git LFS |
+| **Disk** | ~250 MB for dependencies; sample STL files included |
 
 ---
 
@@ -100,8 +104,8 @@ control or conventional mouse/keyboard input.
 ### 1. Clone and set up environment
 
 ```bash
-git clone https://github.com/your-org/3d-control.git
-cd 3d-control
+git clone https://github.com/kusumowidi/Medical-UI-Pro.git
+cd Medical-UI-Pro
 
 python -m venv .venv
 # Windows:
@@ -131,14 +135,6 @@ python main.py
 > **Note:** The app auto-detects OpenGL support. If PyOpenGL fails to initialize, it falls back to
 > the software renderer automatically.
 
-### 4. Large STL Assets (Git LFS)
-
-Sample STL files are tracked via [Git LFS](https://git-lfs.github.com/). To download them:
-```bash
-git lfs install
-git lfs pull
-```
-
 ---
 
 ## 🧪 Running Tests
@@ -167,8 +163,9 @@ Tests are headless — no GPU, display, or webcam required.
 ├── pyproject.toml       # Modern packaging metadata + tool config
 ├── CHANGELOG.md         # Version history
 ├── CONTRIBUTING.md      # Contributor guide
+├── example.png          # UI preview image
 ├── LICENSE              # MIT license
-├── .gitignore           # Git ignore rules (STL → Git LFS)
+├── .gitignore           # Git ignore rules
 ├── .github/
 │   └── workflows/
 │       └── lint.yml     # CI: ruff + mypy + pytest
@@ -179,7 +176,7 @@ Tests are headless — no GPU, display, or webcam required.
     └── test_gestures.py # Gesture classification unit tests
 ```
 
-> **STL sample files** (`*.stl`) are excluded from Git and tracked via Git LFS.
+> **STL sample files** (`*.stl`) are included in the root directory for immediate testing.
 
 ---
 
@@ -259,11 +256,6 @@ All mesh data is passed between modules as a plain Python dict:
 ## 📄 License
 
 MIT License — see [LICENSE](LICENSE) for details.
-
-> Copyright (c) 2026 Biomedical Engineering — Universitas Indonesia  
-> This project is for educational and research use only.
-
----
 
 ## 🤝 Contributing
 
